@@ -42,48 +42,76 @@ console.log('port running on 8080');
         }
     });
 
+    app.get('/getpostsbyuser/:user_id', (req, res) => {
+        if(!isNaN(req.params.user_id)) {
+            posts.getpostsbyuser(req.params.user_id).then((result) => {
+                console.log(result);
+                res.status(201).json({
+                    result
+                });
+            }).catch((err) => { throw err; });
+        }
+        else {
+            console.log('user id is not a number');
+        }
+    });
+
     app.get('/getinitialinfo/:user_id', (req, res) => {
         if(!isNaN(req.params.user_id)) {
             posts.getinitialinfo(req.params.user_id).then((result) =>{
                 console.log(result);
-            }).catch((err) => { throw err });
+                res.status(201).json({
+                    result
+                });
+            }).catch((err) => { throw err; });
         }
         else{
             console.log('Not null failed');
         }
     });
 
-    // app.get('/getimage', (req, res) => {
-    //     res.send(
-    //         //cloudinary.image("https://upload.wikimedia.org/wikipedia/commons/0/0c/Scarlett_Johansson_Césars_2014.jpg", {type: "fetch"})    
-    //         cloudinary.image("https://upload.wikimedia.org/wikipedia/commons/0/0c/Scarlett_Johansson_Césars_2014.jpg", {type: "fetch"})
-    //     );
-    // });
+    app.get('/getuserdetails/:user_id', (req, res) => {
+        if(!isNaN(req.params.user_id)) {
+            posts.getuserdetails(req.params.user_id).then((result) => {
+                console.log(result);
+                res.status(201).json({
+                    result
+                });
+            }).catch((err) => { throw err; });
+        }
+        else{
+            console.log('User id must be an integer');
+        }
+    });
+
+    app.get('/getvoterinfobypost/:post_id', (req, res) => {
+        if(!isNaN(req.params.post_id)) {
+            posts.getvoterinfobypost(req.params.post_id).then((result) => {
+                console.log(result);
+                res.status(201).json({
+                    result
+                });
+            }).catch((err) => { throw err; });
+        }
+        else{
+            console.log('post id must be an integer');
+        }
+    });
+
+    app.get('/getcommentsbypost/:post_id/:limit', (req, res) => {
+        if(!isNaN(req.params.post_id) && !isNaN(req.params.limit)) {
+            posts.getcommentsbypost(req.params.post_id, req.params.limit ).then((result) => {
+                console.log(result);
+                res.status(201).json({
+                    result
+                });
+            }).catch((err) => { throw err; });
+        }
+        else{
+            console.log('post id must be an integer');
+        }
+    });
+
     
-    
-    
-
-//  app.get('/getallposts', (req, res) => {
-//      con.query('CALL Display_Posts()', (err, result) => {
-//          if (err) throw err;
-//           //console.log('Called SPS');
-//          console.log(result);
-//          res.status(201).json({
-//              message: result
-//          });
-//      });
-//  });
-
-
-//   app.get('/getpostsbyid/:id', (req, res) => {
-//      con.query('CALL Get_Posts_By_id(?)', [req.params.id],  (err, result) => {
-//          if(err) throw err;
-//          console.log(result);
-//          res.status(201).json({
-//              result
-//          });
-//      });
-//  });
-
 
 // module.exports = con;
