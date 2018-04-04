@@ -1,9 +1,7 @@
-// const mysql = require('mysql');
 const express = require('express');
 const app = express();
 const con = require('./connection');
 const cloudinary = require('cloudinary');
-// const getpostsbytopic = require('./posts');
 const posts = require('./posts');
 
 const bodyParser = require('body-parser');
@@ -20,7 +18,7 @@ cloudinary.config({
     api_secret: 'Kcsx9wMBbZVG8O-raoth2N76ByM'
 });
 
-console.log('port running on 8080');
+    console.log('port running on 8080');
 
     con.query('USE photoapp;', (err, result) => {
          if (err) throw err;
@@ -114,4 +112,3 @@ console.log('port running on 8080');
 
     
 
-// module.exports = con;
