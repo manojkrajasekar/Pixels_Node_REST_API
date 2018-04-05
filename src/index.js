@@ -28,9 +28,9 @@ cloudinary.config({
      });
 
      app.use(express.static('public'))
-     
+
      app.get('/', () => {
-         res.send('Cool manoj');
+         res.render('public');
      });
 
 
