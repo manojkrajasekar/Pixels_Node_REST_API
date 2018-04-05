@@ -27,6 +27,12 @@ cloudinary.config({
          console.log('Using the photoapp database');
      });
 
+     app.use(express.static('public'))
+     
+     app.get('/', () => {
+         res.send('Cool manoj');
+     });
+
 
     app.get('/https://pixels-heroku-node-api.herokuapp.com/getpostsbytopic/:topic_id', (req, res) => {
         if(!isNaN(req.params.topic_id)) {
