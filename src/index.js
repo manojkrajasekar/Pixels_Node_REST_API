@@ -28,7 +28,7 @@ cloudinary.config({
      });
 
 
-    app.get('https://git.heroku.com/pixels-heroku-node-api.git/getpostsbytopic/:topic_id', (req, res) => {
+    app.get('https://pixels-heroku-node-api.herokuapp.com/getpostsbytopic/:topic_id', (req, res) => {
         if(!isNaN(req.params.topic_id)) {
             posts.getpostsbytopic(req.params.topic_id).then((result) => {
                 console.log(result);
