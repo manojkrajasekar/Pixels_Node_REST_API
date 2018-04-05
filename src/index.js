@@ -10,7 +10,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const port = 8080;
-app.listen(port);
+app.listen(port, () => {
+    console.log('Working fine');
+});
 
 cloudinary.config({
     cloud_name:'pixelsapp',
