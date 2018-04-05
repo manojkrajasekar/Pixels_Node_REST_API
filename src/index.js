@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const port = 8080;
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
     console.log('Working fine');
 });
 
