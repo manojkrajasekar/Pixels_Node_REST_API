@@ -33,8 +33,8 @@ cloudinary.config({
          res.render('public');
      });
 
-
-    app.get('/https://pixels-heroku-node-api.herokuapp.com/getpostsbytopic/:topic_id', (req, res) => {
+     // /https://pixels-heroku-node-api.herokuapp.com/getpostsbytopic/
+    app.get('/getpostsbytopic/:topic_id', (req, res) => {
         if(!isNaN(req.params.topic_id)) {
             posts.getpostsbytopic(req.params.topic_id).then((result) => {
                 console.log(result);
