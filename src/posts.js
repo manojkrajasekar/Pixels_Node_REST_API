@@ -70,10 +70,12 @@ getinitialinfo = (userid) => {
 
 
 module.exports = {
-    getpostsbytopic: getpostsbytopic,
-    getpostsbyuser: getpostsbyuser,
-    getvoterinfobypost: getvoterinfobypost,
-    getuserdetails: getuserdetails,
-    getcommentsbypost: getcommentsbypost,
-    getinitialinfo: getinitialinfo
+    getpostsbytopic,
+    getpostsbyuser,
+    getvoterinfobypost,
+    getuserdetails,
+    getcommentsbypost,
+    getinitialinfo
 };
+
+
