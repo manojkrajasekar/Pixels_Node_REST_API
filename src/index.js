@@ -9,31 +9,29 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const port = 8080;
-app.listen(process.env.PORT || port, () => {
-    console.log('Working fine');
+const port = process.env.PORT || 8080;
+app.listen(port, (req, res) => {
+    console.log('Running on port 8080');
 });
 
 cloudinary.config({
-    cloud_name:'pixelsapp',
+    cloud_name:'pixelsapp', 
     api_key: '921914376421383',
     api_secret: 'Kcsx9wMBbZVG8O-raoth2N76ByM'
 });
 
-    console.log('port running on 8080');
+    
 
     con.query('USE photoapp;', (err, result) => {
          if (err) throw err;
          console.log('Using the photoapp database');
      });
 
-     app.use(express.static('public'))
+     //app.use(express.static('public'))
 
-     app.get('/', () => {
-         res.render('public');
-     });
+      
 
-     app.get('/https://pixels-heroku-node-api.herokuapp.com', () => {
+     app.get('/', (req, res) => {
         res.send('working');
      });
 
