@@ -23,7 +23,13 @@ const getPostsByTopic = (req, res) => {
             });
     }
     else{
-        logger.info('topic is not an integer');
+        const errorMessage = 'Topic ID is not an integer';
+        logger.error(errorMessage);
+        res.status(500).json({ 
+            error: {
+                message: errorMessage
+            }
+        });
     }
 }
 
@@ -44,7 +50,13 @@ const getpostsbyuser = (req, res) => {
             });
     }
     else {
-        console.log('user id is not a integer');
+        const errorMessage = 'User ID is not an integer';
+        logger.error(errorMessage);
+        res.status(500).json({ 
+            error: {
+                message: errorMessage
+            }
+        });
     }
 }
 

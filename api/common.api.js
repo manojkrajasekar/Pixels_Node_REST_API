@@ -27,7 +27,13 @@ const getinitialinfo = (req, res) => {
             });
     }
     else{
-        logger.error('User ID is not an integer');
+        const errorMessage = 'User ID is not an integer';
+        logger.error(errorMessage);
+        res.status(500).json({ 
+            error: {
+                message: errorMessage
+            }
+        });
     }
 }
 
