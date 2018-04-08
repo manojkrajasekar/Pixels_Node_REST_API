@@ -33,6 +33,10 @@ cloudinary.config({
          res.render('public');
      });
 
+     app.get('/https://pixels-heroku-node-api.herokuapp.com', () => {
+        res.send('working');
+     });
+
      // /https://pixels-heroku-node-api.herokuapp.com/getpostsbytopic/
     app.get('/getpostsbytopic/:topic_id', (req, res) => {
         if(!isNaN(req.params.topic_id)) {
@@ -44,7 +48,7 @@ cloudinary.config({
             }).catch((err) => { throw err; });
         }
         else{
-            console.log('Not null failed');
+            console.log('topic is not an integer');
         }
     });
 
@@ -58,7 +62,7 @@ cloudinary.config({
             }).catch((err) => { throw err; });
         }
         else {
-            console.log('user id is not a number');
+            console.log('user id is not a integer');
         }
     });
 
@@ -72,7 +76,7 @@ cloudinary.config({
             }).catch((err) => { throw err; });
         }
         else{
-            console.log('Not null failed');
+            console.log('user id is not an integer');
         }
     });
 
@@ -86,7 +90,7 @@ cloudinary.config({
             }).catch((err) => { throw err; });
         }
         else{
-            console.log('User id must be an integer');
+            console.log('User id not an integer');
         }
     });
 
@@ -100,7 +104,7 @@ cloudinary.config({
             }).catch((err) => { throw err; });
         }
         else{
-            console.log('post id must be an integer');
+            console.log('post id is not an integer');
         }
     });
 
@@ -114,7 +118,7 @@ cloudinary.config({
             }).catch((err) => { throw err; });
         }
         else{
-            console.log('post id must be an integer');
+            console.log('post id is not an integer');
         }
     });
 
