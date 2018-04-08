@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const con = require('./connection');
 const cloudinary = require('cloudinary');
-const posts = require('./posts');
+const posts = require('./Database/posts');
+const userDetails = require('./Database/userDetails');
 
 const bodyParser = require('body-parser');
 
@@ -60,7 +61,7 @@ app.get('/getpostsbyuser/:user_id', (req, res) => {
 
 app.get('/getinitialinfo/:user_id', (req, res) => {
     if(!isNaN(req.params.user_id)) {
-        posts.getinitialinfo(req.params.user_id).then((result) =>{
+        userDetails.getinitialinfo(req.params.user_id).then((result) =>{
             console.log(result);
             res.status(201).json({
                 result
@@ -74,7 +75,7 @@ app.get('/getinitialinfo/:user_id', (req, res) => {
 
 app.get('/getuserdetails/:user_id', (req, res) => {
     if(!isNaN(req.params.user_id)) {
-        posts.getuserdetails(req.params.user_id).then((result) => {
+        userDetails.getuserdetails(req.params.user_id).then((result) => {
             console.log(result);
             res.status(201).json({
                 result
