@@ -1,25 +1,23 @@
 
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const userDetails = require("./api/common.api");
 const postsAPI = require("./api/posts.api");
-const bodyParser = require('body-parser');
+const api = require("./configs/api.config");
 
 const app = express();
+const port = process.env.PORT || 8080;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-const port = process.env.PORT || 8080;
 
-app.listen(port, (req, res) => {
-    console.log('Running on port 8080');
-});
+app.listen(port, (req, res) => console.log('Running on port 8080'));
 
+app.get(`/api/${api.version}/get_initial_info/:user_id`, userDetails.getinitialinfo);
 
-app.get('/getinitialinfo/:user_id', userDetails.getinitialinfo);
-
-app.get('/getpostsbytopic/:topic_id', postsAPI.getpostsbytopic);
-app.get('/getpostsbyuser/:user_id', postsAPI.getpostsbyuser);
+app.get(`/api/${api.version}/get_posts_by_topic/:topic_id`, postsAPI.getPostsByTopic);
+app.get(`/api/${api.version}/get_posts_by_user/:user_id`, postsAPI.getpostsbyuser);
 
 
 

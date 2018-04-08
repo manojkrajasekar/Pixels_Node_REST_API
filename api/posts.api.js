@@ -1,17 +1,21 @@
 const posts = require('../database/posts.db');
 const logger = require("../utils/logger");
 
-const getpostsbytopic = (req, res) => {
+const getPostsByTopic = (req, res) => {
     
     // Validate the incoming request params
     if(!isNaN(req.params.topic_id)) {
     
         posts
-            .getpostsbytopic(req.params.topic_id)
+            .getPostsByTopic(req.params.topic_id)
             .then((result) => {
-                
                 logger.info(req, result);
-                res.status(201).json({ result });
+
+                let items = result;
+                let meta = {
+                    total: result.length
+                };
+                res.status(201).json({ items, meta });
             })
             .catch((error) => { 
                 logger.error(req, error);
@@ -46,6 +50,6 @@ const getpostsbyuser = (req, res) => {
 
 
 module.exports = {
-    getpostsbytopic,
+    getPostsByTopic,
     getpostsbyuser
 };

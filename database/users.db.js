@@ -1,29 +1,13 @@
 const con = require('./utils/connection');
+const processor = require("./utils/processers");
 
-getuserdetails = (userid) => {
+const getuserdetails = (userid) => {
     return new Promise ((resolve, reject) => {
-        con.query('CALL get_user_Details(?)', [userid], (err, result) =>{
-            if(err) {
-                return reject(err);
-            }
-            resolve(result);
-        });
+        con.query('CALL get_user_Details(?)', [userid], processor.processResults(resolve, reject));
     });
-};
-
-getinitialinfo = (userid) => {
-    return new Promise ((resolve, reject) => {
-        con.query('CALL get_initial_info(?)', [userid], (err, result) => {
-            if(err) {
-                return reject(err);
-            }
-            resolve(result);
-        });
-     });
 };
 
 
 module.exports = {
-    getuserdetails,
-    getinitialinfo
-};
+    getuserdetails
+}

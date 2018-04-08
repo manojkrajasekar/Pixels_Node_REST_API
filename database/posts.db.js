@@ -1,55 +1,33 @@
 const con = require('./utils/connection');
+const processor = require("./utils/processers");
 
-getpostsbytopic = (topicid) => {
-    return new Promise ((resolve, reject) => {
-        con.query('CALL get_posts_by_topic(?)', [topicid],  (err, result) => {
-            if(err) {
-               return reject(err);
-            }
-            resolve(result);
-        });
-    });
-};
-
-getpostsbyuser = (userid) => {
-    return new Promise ((resolve, reject) => {
-        con.query('CALL get_posts_by_user(?)', [userid], (err, result) => {
-            if(err) {
-                return reject(err);
-            }
-            resolve(result);
-        });
-    });
-};
-
-getvoterinfobypost = (postid) => {
+const getPostsByTopic = (topicid) => {
     return new Promise((resolve, reject) => {
-        con.query('CALL get_voter_info_by_post(?)', [postid], (err, result) => {
-            if(err) {
-                return reject(err);
-            }
-            resolve(result);
-        });
+        con.query('CALL get_posts_by_topic(?)', [topicid], processor.processResults(resolve, reject));
     });
 };
 
-getcommentsbypost = (postid, limit) => {
+const getPostsByUser = (userid) => {
     return new Promise ((resolve, reject) => {
-        con.query('CALL get_comments(?, ?)', [postid, limit], (err, result) => {
-            if(err) {
-                return reject(err);
-            }
-            resolve(result);
-        });
+        con.query('CALL get_posts_by_user(?)', [userid], processor.processResults(resolve, reject));
+    });
+};
+
+const getvoterinfobypost = (postid) => {
+    return new Promise((resolve, reject) => {
+        con.query('CALL get_voter_info_by_post(?)', [postid], processor.processResults(resolve, reject));
+    });
+};
+
+const getcommentsbypost = (postid, limit) => {
+    return new Promise ((resolve, reject) => {
+        con.query('CALL get_comments(?, ?)', [postid, limit], processor.processResults(resolve, reject));
      });
 };
 
-
 module.exports = {
-    getpostsbytopic,
-    getpostsbyuser,
+    getPostsByTopic,
+    getPostsByUser,
     getvoterinfobypost,
     getcommentsbypost
 };
-
-
