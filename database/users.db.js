@@ -1,4 +1,4 @@
-const con = require('../MySQl_Connection/connection');
+const con = require('./utils/connection');
 
 getuserdetails = (userid) => {
     return new Promise ((resolve, reject) => {
