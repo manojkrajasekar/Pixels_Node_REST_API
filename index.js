@@ -14,10 +14,10 @@ app.use(bodyParser.json());
 
 app.listen(port, (req, res) => console.log('Running on port 8080'));
 
-app.get(`/api/${api.version}/get_initial_info/:user_id`, userDetails.getinitialinfo);
+app.get(`/get_initial_info/:user_id`, userDetails.getinitialinfo);
 
-app.get(`/api/${api.version}/get_posts_by_topic/:topic_id`, postsAPI.getPostsByTopic);
-app.get(`/api/${api.version}/get_posts_by_user/:user_id`, postsAPI.getpostsbyuser);
+app.get(`/get_posts_by_topic/:topic_id`, postsAPI.getPostsByTopic);
+app.get(`/get_posts_by_user/:user_id`, postsAPI.getpostsbyuser);
 
 
 
