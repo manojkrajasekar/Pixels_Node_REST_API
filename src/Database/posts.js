@@ -1,4 +1,4 @@
-const con = require('../connection');
+const con = require('../MySQl_Connection/connection');
 
 getpostsbytopic = (topicid) => {
     return new Promise ((resolve, reject) => {

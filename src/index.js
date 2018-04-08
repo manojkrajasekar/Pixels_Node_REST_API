@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const con = require('./connection');
+const con = require('./MySQl_Connection/connection');
 const cloudinary = require('cloudinary');
 const posts = require('./Database/posts');
 const userDetails = require('./Database/userDetails');
