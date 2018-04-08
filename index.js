@@ -1,6 +1,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require("cors");
 
 const userDetails = require("./api/common.api");
 const postsAPI = require("./api/posts.api");
@@ -11,6 +12,7 @@ const port = process.env.PORT || 8080;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 
 app.listen(port, (req, res) => console.log('Running on port 8080'));
 
