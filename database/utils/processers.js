@@ -7,4 +7,13 @@ const processResults = (resolve, reject) => (error, results, fields) => {
     resolve(results[0]);
 };
 
-module.exports = { processResults };
+const processVoteResults = (resolve, reject) => (error, results, fields) => {
+    if (error) {
+        reject(error);
+        return;
+    }
+
+    resolve(results[1]);
+};
+
+module.exports = { processResults, processVoteResults };

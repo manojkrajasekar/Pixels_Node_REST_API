@@ -4,6 +4,7 @@ const cors = require("cors");
 
 const userDetails = require("./api/common.api");
 const postsAPI = require("./api/posts.api");
+const votesAPI = require("./api/votes.api");
 const api = require("./configs/api.config");
 
 const app = express();
@@ -19,7 +20,8 @@ app.get(`/get_initial_info/:user_id`, userDetails.getInitialInfo);
 
 app.get(`/get_posts_by_topic/:topic_id`, postsAPI.getPostsByTopic);
 app.get(`/get_posts_by_user/:user_id`, postsAPI.getPostsByUser);
-
+app.post(`/post_vote/:post_id/:user_id`, votesAPI.AddVote);
+app.get(`/check_valid_vote/:post_id/:user_id`, votesAPI.CheckValidVote);
 
 
 // app.get('/getuserdetails/:user_id', (req, res) => {
