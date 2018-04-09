@@ -24,7 +24,7 @@ const getPostsByTopic = (req, res) => {
             });
     }
     else{
-        const errorMessage = 'Topic ID is not an number';
+        const errorMessage = 'Topic ID is not an integer';
         logger.error(errorMessage);
         res.status(500).json({ 
             error: {
