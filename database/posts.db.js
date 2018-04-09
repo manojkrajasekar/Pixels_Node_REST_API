@@ -8,7 +8,7 @@ const getPostsByTopic = (topicid) => {
 };
 
 const getPostsByUser = (userid) => {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         con.query('CALL get_posts_by_user(?)', [userid], processor.processResults(resolve, reject));
     });
 };
