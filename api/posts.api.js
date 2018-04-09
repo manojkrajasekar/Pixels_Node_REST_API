@@ -15,6 +15,7 @@ const getPostsByTopic = (req, res) => {
                 let meta = {
                     total: result.length
                 };
+                console.log(items);
                 res.status(201).json({ items, meta });
             })
             .catch((error) => { 
