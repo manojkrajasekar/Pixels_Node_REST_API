@@ -34,15 +34,19 @@ const getPostsByTopic = (req, res) => {
 }
 
 
-const getpostsbyuser = (req, res) => {
+const getPostsByUser = (req, res) => {
     if(!isNaN(req.params.user_id)) {
         
         posts
-            .getpostsbyuser(req.params.user_id)
+            .getPostsByUser(req.params.user_id)
             .then((result) => {
-                
                 logger.info(result);
-                res.status(201).json({ result });
+
+                let items = result;
+                let meta = {
+                    total: result.length
+                }
+                res.status(201).json({ items, meta });
             })
             .catch((error) => { 
                 logger.error(req, error);
@@ -63,5 +67,5 @@ const getpostsbyuser = (req, res) => {
 
 module.exports = {
     getPostsByTopic,
-    getpostsbyuser
+    getPostsByUser
 };

@@ -4,11 +4,11 @@ const utils = require("./utils");
 
 const logger = require("../utils/logger");
 
-const getinitialinfo = (req, res) => {
+const getInitialInfo = (req, res) => {
     if(!isNaN(req.params.user_id)) {
         
         Promise.all([
-            users.getuserdetails(req.params.user_id),
+            users.getUserDetails(req.params.user_id),
             topics.getTopics(true, 1)
         ])
             .then((results) =>{
@@ -38,5 +38,5 @@ const getinitialinfo = (req, res) => {
 }
 
 module.exports = { 
-    getinitialinfo
+    getInitialInfo
 };
