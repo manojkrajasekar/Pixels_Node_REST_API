@@ -44,7 +44,7 @@ const AddVote = (req, res) => {
             });
     }
     else {
-        const errorMessage = 'Post ID or User ID is not a valid';
+        const errorMessage = 'Post ID or User ID is not valid';
         logger.error(errorMessage);
         res.status(500).json({ 
             error: {
