@@ -18,7 +18,7 @@ const CheckValidVote = (req, res) => {
             });
     }
     else {
-        const errorMessage = 'Post ID or User ID is not valid';
+        const errorMessage = 'Post ID or User ID is not a valid one';
         logger.error(errorMessage);
         res.status(500).json({ 
             error: {
