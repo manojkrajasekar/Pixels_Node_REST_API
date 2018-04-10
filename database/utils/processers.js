@@ -13,7 +13,7 @@ const processVoteResults = (resolve, reject) => (error, results, fields) => {
         return;
     }
 
-    resolve(results[0]);
+    resolve(results[1]);
 };
 
 module.exports = { processResults, processVoteResults };
