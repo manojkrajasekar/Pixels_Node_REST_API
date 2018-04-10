@@ -13,7 +13,7 @@ const processAddVoteResults = (resolve, reject) => (error, results, fields) => {
         return;
     }
 
-    resolve(results[1]);
+    resolve(results);
 };
 
 const processValidVoteResults = (resolve, reject) => (error, results, fields) => {

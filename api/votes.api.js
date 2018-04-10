@@ -83,7 +83,7 @@ const AddValidVote = (req, res) => {
             });
     }
     else {
-        const errorMessage = 'Post ID or User ID is not valid';
+        const errorMessage = 'Post ID or User ID is an integer';
         logger.error(errorMessage);
         res.status(500).json({ 
             error: {
