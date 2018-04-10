@@ -20,51 +20,11 @@ app.get(`/get_initial_info/:user_id`, userDetails.getInitialInfo);
 
 app.get(`/get_posts_by_topic/:topic_id`, postsAPI.getPostsByTopic);
 app.get(`/get_posts_by_user/:user_id`, postsAPI.getPostsByUser);
+
 app.post(`/add_vote/:post_id/:user_id`, votesAPI.AddVote);
-app.get(`/check_valid_vote/:post_id/:user_id`, votesAPI.CheckValidVote);
+app.get(`/check_if_valid_vote/:post_id/:user_id`, votesAPI.CheckIfValidVote);
 
 
-// app.get('/getuserdetails/:user_id', (req, res) => {
-//     if(!isNaN(req.params.user_id)) {
-//         userDetails.getuserdetails(req.params.user_id).then((result) => {
-//             console.log(result);
-//             res.status(201).json({
-//                 result
-//             });
-//         }).catch((err) => { throw err; });
-//     }
-//     else{
-//         console.log('User id not an integer');
-//     }
-// });
-
-// app.get('/getvoterinfobypost/:post_id', (req, res) => {
-//     if(!isNaN(req.params.post_id)) {
-//         posts.getvoterinfobypost(req.params.post_id).then((result) => {
-//             console.log(result);
-//             res.status(201).json({
-//                 result
-//             });
-//         }).catch((err) => { throw err; });
-//     }
-//     else{
-//         console.log('post id is not an integer');
-//     }
-// });
-
-// app.get('/getcommentsbypost/:post_id/:limit', (req, res) => {
-//     if(!isNaN(req.params.post_id) && !isNaN(req.params.limit)) {
-//         posts.getcommentsbypost(req.params.post_id, req.params.limit ).then((result) => {
-//             console.log(result);
-//             res.status(201).json({
-//                 result
-//             });
-//         }).catch((err) => { throw err; });
-//     }
-//     else{
-//         console.log('post id is not an integer');
-//     }
-// });
 
     
 

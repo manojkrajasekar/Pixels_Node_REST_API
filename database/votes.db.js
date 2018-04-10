@@ -1,17 +1,17 @@
 const con = require('./utils/connection');
 const processor = require("./utils/processers");
 
-const postAddVote = (postid, userid) => {
+const AddVote = (postid, userid) => {
     return new Promise((resolve, reject) => {
         query_str = 'CALL add_vote(?, ?, @out); SELECT @out as vote_id' ;
-        con.query(query_str, [postid, userid], processor.processVoteResults(resolve, reject));
+        con.query(query_str, [postid, userid], processor.processAddVoteResults(resolve, reject));
     });
 };
 
-const getCheckValidVote = (postid, userid) => {
+const CheckIfValidVote = (postid, userid) => {
     return new Promise((resolve, reject) => {
-        con.query('CALL get_valid_vote(?, ?)', [postid, userid], processor.processVoteResults(resolve, reject));
+        con.query('CALL get_valid_vote(?, ?)', [postid, userid], processor.processValidVoteResults(resolve, reject));
     });
 };
 
-module.exports = { postAddVote, getCheckValidVote };
+module.exports = { AddVote, CheckIfValidVote };
