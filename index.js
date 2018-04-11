@@ -21,10 +21,10 @@ app.get(`/get_initial_info/:user_id`, userDetails.getInitialInfo);
 app.get(`/get_posts_by_topic/:topic_id`, postsAPI.getPostsByTopic);
 app.get(`/get_posts_by_user/:user_id`, postsAPI.getPostsByUser);
 
-//app.post(`/add_vote/:post_id/:user_id`, votesAPI.AddVote);
+
 app.post(`/add_vote/:post_id/:user_id`, votesAPI.AddVote);
 app.get(`/get_vote_count/:post_id`, votesAPI.getVoteCount);
-//app.get(`/check_if_valid_vote/:post_id/:user_id`, votesAPI.CheckIfValidVote);
+
 
 
 
