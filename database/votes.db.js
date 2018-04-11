@@ -14,12 +14,19 @@ const processor = require("./utils/processers");
 //     });
 // };
 
-const AddValidVote = (postid, userid) => {
+const AddVote = (postid, userid) => {
     return new Promise((resolve, reject) => {
         con.query('CALL add_valid_vote(?, ?)', [postid, userid], processor.processAddVoteResults(resolve, reject));
     });
 };
 
+const getVoteCount = (postid) => {
+    return new Promise((resolve, reject) => {
+        con.query('CALL get_vote_count_by_post(?)', [postid], processor.processgetVoteCountResults(resolve, reject));
+    });
+};
+
 module.exports = { 
-    AddValidVote
+    AddVote,
+    getVoteCount
 };

@@ -11,7 +11,7 @@ const getInitialInfo = (req, res) => {
             users.getUserDetails(req.params.user_id),
             topics.getTopics(true, 1)
         ])
-            .then((results) =>{
+            .then((results) => {
                 let loggedInUserDetails = results[0];
                 let currentTopic = results[1];
 

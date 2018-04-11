@@ -16,7 +16,7 @@ const processAddVoteResults = (resolve, reject) => (error, results, fields) => {
     resolve(results);
 };
 
-const processValidVoteResults = (resolve, reject) => (error, results, fields) => {
+const processgetVoteCountResults = (resolve, reject) => (error, results, fileds) => {
     if (error) {
         reject(error);
         return;
@@ -25,4 +25,4 @@ const processValidVoteResults = (resolve, reject) => (error, results, fields) =>
     resolve(results[0]);
 };
 
-module.exports = { processResults, processAddVoteResults, processValidVoteResults };
+module.exports = { processResults, processAddVoteResults, processgetVoteCountResults };

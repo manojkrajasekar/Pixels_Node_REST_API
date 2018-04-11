@@ -1,27 +1,29 @@
 const posts = require('../database/posts.db');
+const votes = require('../database/votes.db');
 const logger = require("../utils/logger");
 
 const getPostsByTopic = (req, res) => {
     
     // Validate the incoming request params
     if(!isNaN(req.params.topic_id)) {
-    
+        
+        
         posts
             .getPostsByTopic(req.params.topic_id)
             .then((result) => {
-                logger.info(req, result);
+                    logger.info(req, result);
 
-                let items = result;
-                let meta = {
-                    total: result.length
-                };
-                console.log(items);
-                res.status(201).json({ items, meta });
-            })
-            .catch((error) => { 
-                logger.error(req, error);
-                res.status(500).json({ error });
-            });
+                    let items = result;
+                    let meta = {
+                        total: result.length
+                    };
+                    console.log(items);
+                    res.status(201).json({ items, meta });
+                })
+                .catch((error) => { 
+                    logger.error(req, error);
+                    res.status(500).json({ error });
+                });
     }
     else{
         const errorMessage = 'Topic ID is not an number';
