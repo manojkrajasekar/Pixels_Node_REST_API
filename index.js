@@ -23,7 +23,7 @@ app.get(`/get_posts_by_user/:user_id`, postsAPI.getPostsByUser);
 
 
 app.post(`/update_vote`, votesAPI.UpdateVote);
-// app.get(`/get_vote_count/:post_id`, votesAPI.getVoteCount);
+
 
 
 
