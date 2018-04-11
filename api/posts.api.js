@@ -7,7 +7,6 @@ const getPostsByTopic = (req, res) => {
     // Validate the incoming request params
     if(!isNaN(req.params.topic_id)) {
         
-        
         posts
             .getPostsByTopic(req.params.topic_id)
             .then((result) => {
@@ -26,7 +25,7 @@ const getPostsByTopic = (req, res) => {
                 });
     }
     else{
-        const errorMessage = 'Topic ID is not an number';
+        const errorMessage = 'Topic ID is not valid';
         logger.error(errorMessage);
         res.status(500).json({ 
             error: {
