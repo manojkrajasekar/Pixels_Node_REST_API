@@ -7,22 +7,22 @@ const processResults = (resolve, reject) => (error, results, fields) => {
     resolve(results[0]);
 };
 
-const processAddVoteResults = (resolve, reject) => (error, results, fields) => {
+const processUpdateResults = (resolve, reject) => (error, results, fields) => {
     if (error) {
         reject(error);
         return;
     }
 
-    resolve(results);
+    resolve({});
 };
 
-const processgetVoteCountResults = (resolve, reject) => (error, results, fileds) => {
-    if (error) {
-        reject(error);
-        return;
-    }
+// const processgetVoteCountResults = (resolve, reject) => (error, results, fileds) => {
+//     if (error) {
+//         reject(error);
+//         return;
+//     }
 
-    resolve(results[0]);
-};
+//     resolve(results[0]);
+// };
 
-module.exports = { processResults, processAddVoteResults, processgetVoteCountResults };
+module.exports = { processResults, processUpdateResults };

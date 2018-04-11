@@ -11,7 +11,7 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ type: 'application/json' }));
 app.use(cors());
 
 app.listen(port, (req, res) => console.log('Running on port 8080'));
@@ -22,8 +22,8 @@ app.get(`/get_posts_by_topic/:topic_id`, postsAPI.getPostsByTopic);
 app.get(`/get_posts_by_user/:user_id`, postsAPI.getPostsByUser);
 
 
-app.post(`/add_vote/:post_id/:user_id`, votesAPI.AddVote);
-app.get(`/get_vote_count/:post_id`, votesAPI.getVoteCount);
+app.post(`/update_vote`, votesAPI.UpdateVote);
+// app.get(`/get_vote_count/:post_id`, votesAPI.getVoteCount);
 
 
 
