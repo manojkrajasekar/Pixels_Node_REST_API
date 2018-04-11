@@ -18,7 +18,7 @@ app.listen(port, (req, res) => console.log('Running on port 8080'));
 
 app.get(`/get_initial_info/:user_id`, userDetails.getInitialInfo);
 
-app.get(`/get_posts_by_topic/:topic_id`, postsAPI.getPostsByTopic);
+app.get(`/get_posts_by_topic/:topic_id/:user_id`, postsAPI.getPostsByTopic);
 app.get(`/get_posts_by_user/:user_id`, postsAPI.getPostsByUser);
 
 

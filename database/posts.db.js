@@ -1,9 +1,9 @@
 const con = require('./utils/connection');
 const processor = require("./utils/processers");
 
-const getPostsByTopic = (topicid) => {
+const getPostsByTopic = (topicid, userid) => {
     return new Promise((resolve, reject) => {
-        con.query('CALL get_posts_by_topic(?)', [topicid], processor.processResults(resolve, reject));
+        con.query('CALL get_posts_by_topic(?, ?)', [topicid, userid], processor.processResults(resolve, reject));
     });
 };
 

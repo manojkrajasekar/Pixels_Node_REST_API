@@ -3,29 +3,19 @@ const votes = require('../database/votes.db');
 const logger = require("../utils/logger");
 
 const getPostsByTopic = (req, res) => {
+    let topicId = req.params.topic_id;
+    let userId = req.params.user_id;
+    let errorMessage;
     
     // Validate the incoming request params
-    if(!isNaN(req.params.topic_id)) {
-        
-        posts
-            .getPostsByTopic(req.params.topic_id)
-            .then((result) => {
-                    logger.info(req, result);
-
-                    let items = result;
-                    let meta = {
-                        total: result.length
-                    };
-                    console.log(items);
-                    res.status(201).json({ items, meta });
-                })
-                .catch((error) => { 
-                    logger.error(req, error);
-                    res.status(500).json({ error });
-                });
+    if(isNaN(topicId)){
+        errorMessage = "Topic Id should be an integer"
     }
-    else{
-        const errorMessage = 'Topic ID is not valid';
+    if(isNaN(userId)){
+        errorMessage = "User Id should be an integer"
+    }
+
+    if (errorMessage != undefined) {
         logger.error(errorMessage);
         res.status(500).json({ 
             error: {
@@ -33,7 +23,25 @@ const getPostsByTopic = (req, res) => {
             }
         });
     }
-}
+
+    posts
+        .getPostsByTopic(topicId, userId)
+        .then((result) => {
+                logger.info(req, result);
+
+                let items = result;
+                let meta = {
+                    total: result.length
+                };
+                console.log(items);
+                res.status(201).json({ items, meta });
+            })
+            .catch((error) => { 
+                logger.error(req, error);
+                res.status(500).json({ error });
+            });
+};
+
 
 
 const getPostsByUser = (req, res) => {
