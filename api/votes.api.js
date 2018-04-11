@@ -4,6 +4,7 @@ const logger = require('../utils/logger');
 const UpdateVote = (req, res) => {
     let postId = req.body.post_id;
     let userId = req.body.user_id;
+    let voteId = req.body.vote_id;
     let errorMessage;
 
     if (isNaN(postId)) {
@@ -22,7 +23,7 @@ const UpdateVote = (req, res) => {
     }
 
     votes
-        .UpdateVote(postId, userId)
+        .UpdateVote(postId, userId, voteId)
         .then((result) => {
             logger.info(req, result);
             let vote_id = result;
