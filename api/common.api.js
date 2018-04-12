@@ -37,6 +37,27 @@ const getInitialInfo = (req, res) => {
     }
 }
 
+const getUserDetails = (req, res) => {
+    let userid = req.params.user_id;
+    let errorMessage;
+
+    if(isNaN(req.params.userid)) {
+        errorMessage = "User Id must be an integer"
+    }
+
+    if(errorMessage != undefined){
+        logger.error(errorMessage);
+        res.status(500).json({ 
+            error: {
+                message: errorMessage
+            }
+        });
+    }
+    else {
+
+    }
+}
+
 module.exports = { 
     getInitialInfo
 };
