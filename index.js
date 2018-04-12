@@ -22,7 +22,7 @@ app.get(`/get_posts_by_topic/:topic_id/:user_id`, postsAPI.getPostsByTopic);
 app.get(`/get_posts_by_user/:user_id`, postsAPI.getPostsByUser);
 
 
-app.post(`/update_vote`, votesAPI.UpdateVote);
+app.put(`/update_vote`, votesAPI.UpdateVote);
 
 app.put(`/update_user`, userDetails.updateUserDetails);
 

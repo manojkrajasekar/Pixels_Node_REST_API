@@ -26,8 +26,8 @@ const UpdateVote = (req, res) => {
         .UpdateVote(postId, userId, voteId)
         .then((result) => {
             logger.info(req, result);
-            let vote_id = result;
-            res.status(201).json({ vote_id });
+            
+            res.status(201).json({ result });
         })
         .catch((error) => { 
             logger.error(req, error);
