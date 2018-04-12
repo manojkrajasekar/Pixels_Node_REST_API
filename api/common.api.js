@@ -37,27 +37,41 @@ const getInitialInfo = (req, res) => {
     }
 }
 
-const getUserDetails = (req, res) => {
-    let userid = req.params.user_id;
-    let errorMessage;
+const updateUserDetails = (req, res) => {
+    let userId = req.body.user_id;
+    let firstName = req.body.first_name;
+    let lastName = req.body.last_name;
+    let mailId = req.body.mail_id;
 
-    if(isNaN(req.params.userid)) {
-        errorMessage = "User Id must be an integer"
-    }
+    // let errorMessage;
 
-    if(errorMessage != undefined){
-        logger.error(errorMessage);
-        res.status(500).json({ 
-            error: {
-                message: errorMessage
-            }
+    // if(isNaN(req.params.userId)) {
+    //     errorMessage = "User Id must be an integer"
+    // }
+
+    // if(errorMessage != undefined) {
+    //     logger.error(errorMessage);
+    //     res.status(500).json({ 
+    //         error: {
+    //             message: errorMessage
+    //         }
+    //     });
+    // }
+
+    users
+        .updateUserDetails(userId, firstName, lastName, mailId)
+        .then((result) => {
+            logger.info(req, result);
+            
+            res.status(201).json({ result });
+        })
+        .catch((error) => { 
+            logger.error(req, error);
+            res.status(500).json({ error });
         });
-    }
-    else {
-
-    }
 }
 
 module.exports = { 
-    getInitialInfo
+    getInitialInfo,
+    updateUserDetails
 };
