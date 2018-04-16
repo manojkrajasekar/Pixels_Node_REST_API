@@ -9,7 +9,11 @@ const getUserDetails = (userid) => {
 
 const updateUserDetails = (userId, firstName, lastName, mailId) => {
     return new Promise((resolve, reject) => {
-        con.query('CALL update_user_details(?, ?, ?, ?)', [userId, firstName, lastName, mailId], processor.processResults(resolve, reject));
+        con.query(
+            'CALL update_user_details(?, ?, ?, ?)', 
+            [userId, firstName, lastName, mailId], 
+            processor.processResults(resolve, reject)
+        );
     });
 };
 

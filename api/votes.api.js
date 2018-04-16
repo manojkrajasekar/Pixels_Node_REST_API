@@ -20,6 +20,8 @@ const updateVote = (req, res) => {
                 message: errorMessage
             }
         });
+
+        return;
     }
 
     votes.updateVote(postId, userId, voteId)

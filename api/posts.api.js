@@ -10,8 +10,7 @@ const getPostsByTopic = (req, res) => {
     // Validate the incoming request params
     if(isNaN(topicId)){
         errorMessage = "Topic Id should be an integer"
-    }
-    if(isNaN(userId)){
+    } else if(isNaN(userId)){
         errorMessage = "User Id should be an integer"
     }
 
@@ -22,6 +21,8 @@ const getPostsByTopic = (req, res) => {
                 message: errorMessage
             }
         });
+
+        return;
     }
 
     posts
@@ -45,33 +46,48 @@ const getPostsByTopic = (req, res) => {
 
 
 const getPostsByUser = (req, res) => {
-    if(!isNaN(req.params.user_id)) {
-        
-        posts
-            .getPostsByUser(req.params.user_id)
-            .then((result) => {
-                logger.info(result);
-
-                let items = result;
-                let meta = {
-                    total: result.length
-                }
-                res.status(201).json({ items, meta });
-            })
-            .catch((error) => { 
-                logger.error(req, error);
-                res.status(500).json({ error });
-            });
+    let errorMessage;
+    let userId = req.params.user_id;
+    let loggedInUserId = req.params.loggedin_user_id;
+    
+    if(isNaN(userId)){
+        errorMessage = "User Id should be an integer"
     }
-    else {
-        const errorMessage = 'User ID is not an integer';
+
+    if(isNaN(loggedInUserId)) {
+        loggedInUserId = userId;
+    }
+
+    if(isNaN(userId)){
+        errorMessage = "User Id should be an integer"
+    }
+
+    if (errorMessage != undefined) {
         logger.error(errorMessage);
         res.status(500).json({ 
             error: {
                 message: errorMessage
             }
         });
+
+        return;
     }
+
+    posts
+        .getPostsByUser(userId, loggedInUserId)
+        .then((result) => {
+            logger.info(result);
+
+            let items = result;
+            let meta = {
+                total: result.length
+            }
+            res.status(201).json({ items, meta });
+        })
+        .catch((error) => { 
+            logger.error(req, error);
+            res.status(500).json({ error });
+        });
 }
 
 
