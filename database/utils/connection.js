@@ -12,7 +12,7 @@ con.connect((err) => {
 
     logger.info("Connected!");
     
-    con.query('USE photoapp;', (err, result) => {
+    con.query('USE pixels;', (err, result) => {
         if (err) {
             logger.error("Could not connect to the database 'photoapp'!");
             return;
