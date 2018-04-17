@@ -12,13 +12,13 @@ con.connect((err) => {
 
     logger.info("Connected!");
     
-    con.query('USE pixels;', (err, result) => {
+    con.query(`USE ${mysqlConfig.databaseName};`, (err, result) => {
         if (err) {
-            logger.error("Could not connect to the database 'photoapp'!");
+            logger.error(`Could not connect to the database '${mysqlConfig.databaseName}'!`);
             return;
         }
         
-        logger.info('Using the photoapp database');
+        logger.info(`Using the ${mysqlConfig.databaseName} database`);
     });
 });
 

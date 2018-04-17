@@ -20,15 +20,16 @@ const updateVote = (req, res) => {
                 message: errorMessage
             }
         });
+
+        return;
     }
 
     votes.updateVote(postId, userId, voteId)
         .then((result) => {
             logger.info(req, result);
 
-            let voteID = result;
-            console.log(voteID);
-            res.status(201).json({ voteID });
+            console.log(result);
+            res.status(201).json(result);
         })
         .catch((error) => { 
             logger.error(req, error);
