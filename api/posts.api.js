@@ -1,6 +1,7 @@
 const posts = require('../database/posts.db');
 const votes = require('../database/votes.db');
 const logger = require("../utils/logger");
+const utils = require("./utils");
 
 const getPost = (req, res) => {
     let postId = req.params.post_id;
@@ -30,12 +31,8 @@ const getPost = (req, res) => {
         .then((result) => {
                 logger.info(req, result);
 
-                // let items = result;
-                // let meta = {
-                //     total: result.length
-                // };
-                // console.log(items);
-                res.status(201).json(result);
+                post = utils.arrayFirstElementToObject(result);
+                res.status(201).json(post);
             })
             .catch((error) => { 
                 logger.error(req, error);
