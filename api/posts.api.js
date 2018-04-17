@@ -2,6 +2,47 @@ const posts = require('../database/posts.db');
 const votes = require('../database/votes.db');
 const logger = require("../utils/logger");
 
+const getPost = (req, res) => {
+    let postId = req.params.post_id;
+    let userId = req.params.loggedin_user_id;
+    let errorMessage;
+    
+    // Validate the incoming request params
+    if(isNaN(postId)){
+        errorMessage = "Post Id should be an integer"
+    } else if(isNaN(userId)){
+        errorMessage = "User Id should be an integer"
+    }
+
+    if (errorMessage != undefined) {
+        logger.error(errorMessage);
+        res.status(500).json({ 
+            error: {
+                message: errorMessage
+            }
+        });
+
+        return;
+    }
+
+    posts
+        .getPost(postId, userId)
+        .then((result) => {
+                logger.info(req, result);
+
+                // let items = result;
+                // let meta = {
+                //     total: result.length
+                // };
+                // console.log(items);
+                res.status(201).json(result);
+            })
+            .catch((error) => { 
+                logger.error(req, error);
+                res.status(500).json({ error });
+            });
+};
+
 const getPostsByTopic = (req, res) => {
     let topicId = req.params.topic_id;
     let userId = req.params.user_id;
@@ -92,6 +133,7 @@ const getPostsByUser = (req, res) => {
 
 
 module.exports = {
+    getPost,
     getPostsByTopic,
     getPostsByUser
 };
