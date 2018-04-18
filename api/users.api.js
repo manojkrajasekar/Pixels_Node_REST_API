@@ -4,11 +4,6 @@ const logger = require("../utils/logger");
 
 const updateUserDetails = (req, res) => {
 
-    // let userId = req.body.user_id;
-    // let firstName = req.body.first_name;
-    // let lastName = req.body.last_name;
-    // let mailId = req.body.mail_id;
-
     let userId = req.body.userId;
     let firstName = req.body.firstName;
     let lastName = req.body.lastName;
