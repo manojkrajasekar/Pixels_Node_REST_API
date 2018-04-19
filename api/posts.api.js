@@ -129,8 +129,25 @@ const getPostsByUser = (req, res) => {
 }
 
 
+const getBestPost = (req, res) => {
+   
+    posts
+        .getBestPost()
+        .then((result) => {
+            logger.info(result);
+            
+            res.status(201).json({ result });
+        })
+        .catch((error) => { 
+            logger.error(req, error);
+            res.status(500).json({ error });
+        });
+}
+
+
 module.exports = {
     getPost,
     getPostsByTopic,
-    getPostsByUser
+    getPostsByUser,
+    getBestPost
 };

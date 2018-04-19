@@ -19,8 +19,15 @@ const getPostsByUser = (userId, loggedInUserId) => {
     });
 };
 
+const getBestPost = () => {
+    return new Promise((resolve, reject) => {
+        con.query('CALL get_best_post_details()', processor.processResults(resolve, reject));
+    });
+}
+
 module.exports = {
     getPost,
     getPostsByTopic,
-    getPostsByUser
+    getPostsByUser,
+    getBestPost
 };
