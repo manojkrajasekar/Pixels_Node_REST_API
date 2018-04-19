@@ -21,7 +21,7 @@ const getPostsByUser = (userId, loggedInUserId) => {
 
 const getBestPost = () => {
     return new Promise((resolve, reject) => {
-        con.query('CALL get_best_post_details()', processor.processResults(resolve, reject));
+        con.query('CALL get_best_post_details()', processor.processUpdateResults(resolve, reject));
     });
 }
 
