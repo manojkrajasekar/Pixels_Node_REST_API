@@ -31,8 +31,8 @@ getTopic = (req, res) => {
         .then((result) => {
                 logger.info(req, result);
 
-                currentTopic = utils.arrayFirstElementToObject(result);
-                res.status(201).json(currentTopic);
+                currentTopicInfo = utils.arrayFirstElementToObject(result);
+                res.status(201).json({currentTopicInfo});
             })
             .catch((error) => { 
                 logger.error(req, error);
