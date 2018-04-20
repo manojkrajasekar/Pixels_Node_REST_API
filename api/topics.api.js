@@ -32,7 +32,7 @@ getTopic = (req, res) => {
                 logger.info(req, result);
 
                 currentTopic = utils.arrayFirstElementToObject(result);
-                res.status(201).json({currentTopic});
+                res.status(201).json(currentTopic);
             })
             .catch((error) => { 
                 logger.error(req, error);
