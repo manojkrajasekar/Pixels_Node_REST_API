@@ -130,13 +130,31 @@ const getPostsByUser = (req, res) => {
 
 
 const getBestPost = (req, res) => {
-   
+    let topicId = req.params.topic_id;
+    let errorMessage;
+    
+    if(isNaN(topicId)){
+        errorMessage = "Topic Id should be an integer"
+    }
+
+    if (errorMessage != undefined) {
+        logger.error(errorMessage);
+        res.status(500).json({ 
+            error: {
+                message: errorMessage
+            }
+        });
+
+        return;
+    }
+
     posts
-        .getBestPost()
+        .getBestPost(topicId)
         .then((result) => {
             logger.info(result);
             
-            res.status(201).json({ result });
+            let post = utils.arrayFirstElementToObject(result);
+            res.status(201).json(post);
         })
         .catch((error) => { 
             logger.error(req, error);

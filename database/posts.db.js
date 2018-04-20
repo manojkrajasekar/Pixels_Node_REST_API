@@ -19,9 +19,9 @@ const getPostsByUser = (userId, loggedInUserId) => {
     });
 };
 
-const getBestPost = () => {
+const getBestPost = (topicId) => {
     return new Promise((resolve, reject) => {
-        con.query('CALL get_best_post_details()', processor.processResults(resolve, reject));
+        con.query('CALL get_best_post(?)', [topicId], processor.processResults(resolve, reject));
     });
 }
 

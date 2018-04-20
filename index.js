@@ -24,7 +24,7 @@ app.get(`/get_post/:post_id/:loggedin_user_id`, postsAPI.getPost);
 app.get(`/get_posts_by_topic/:topic_id/:user_id`, postsAPI.getPostsByTopic);
 app.get(`/get_posts_by_user/:user_id/:loggedin_user_id`, postsAPI.getPostsByUser);
 app.get(`/get_posts_by_user/:user_id`, postsAPI.getPostsByUser);
-app.get(`/get_best_post_details`, postsAPI.getBestPost);
+app.get(`/get_best_post/:topic_id`, postsAPI.getBestPost);
 
 // Votes API End points
 app.put(`/update_vote`, votesAPI.updateVote);
