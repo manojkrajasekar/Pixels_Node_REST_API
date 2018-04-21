@@ -6,7 +6,7 @@ const commonAPI = require("./api/common.api");
 const postsAPI = require("./api/posts.api");
 const votesAPI = require("./api/votes.api");
 const usersAPI = require("./api/users.api");
-const topicsAPI = require("./api/topics.api");
+
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -26,7 +26,7 @@ app.get(`/get_posts_by_topic/:topic_id/:user_id`, postsAPI.getPostsByTopic);
 app.get(`/get_posts_by_user/:user_id/:loggedin_user_id`, postsAPI.getPostsByUser);
 app.get(`/get_posts_by_user/:user_id`, postsAPI.getPostsByUser);
 app.get(`/get_best_post/:topic_id`, postsAPI.getBestPost);
-app.get(`/get_topic/:topic_id/:limit`, topicsAPI.getTopic);
+
 
 
 // Votes API End points
