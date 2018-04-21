@@ -27,7 +27,7 @@ getTopic = (req, res) => {
     }
 
     topics
-        .getTopics(topicId, limit)
+        .getTopic(topicId, limit)
         .then((result) => {
                 logger.info(req, result);
 
