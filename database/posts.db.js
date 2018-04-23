@@ -1,6 +1,15 @@
 const con = require('./utils/connection');
 const processor = require("./utils/processers");
 
+
+const uploadPost = (userId, topicId, url, description, nextTopic) => {
+    return new Promise((resolve, reject) => {
+        con.query('SET @out = null; CALL add_post(? ,?, ?, ?, ?, @out); SELECT @out as post_id',
+        [userId, topicId, url, description, nextTopic],
+        processor.processResults(resolve, reject));
+    });
+}
+
 const getPost = (postId, userId) => {
     return new Promise((resolve, reject) => {
         con.query('CALL get_post(?, ?)', [postId, userId], processor.processResults(resolve, reject));
@@ -29,5 +38,6 @@ module.exports = {
     getPost,
     getPostsByTopic,
     getPostsByUser,
-    getBestPost
+    getBestPost,
+    uploadPost
 };

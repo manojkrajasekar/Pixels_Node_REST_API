@@ -35,6 +35,8 @@ app.put(`/update_vote`, votesAPI.updateVote);
 // Users API End points
 app.put(`/update_user`, usersAPI.updateUserDetails);
 
+// posts API end points
+app.post(`/upload_post`, postsAPI.uploadPost);
 
 
 
