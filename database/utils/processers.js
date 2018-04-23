@@ -16,4 +16,15 @@ const processUpdateResults = (resolve, reject) => (error, results, fields) => {
     resolve({});
 };
 
-module.exports = { processResults, processUpdateResults };
+const processPostResults = (resolve, reject) => (error, results, fields) => {
+    if (error) {
+        reject(error);
+        return;
+    }
+
+    resolve(results[2]);
+};
+
+
+
+module.exports = { processResults, processUpdateResults, processPostResults };

@@ -10,6 +10,7 @@ const uploadPost = (req, res) => {
     let url = req.body.filecontext;
     let description = req.body.description;
     let nextTopic = req.body.next_topic;
+    let errorMessage;
 
     if(isNaN(userId)){
         errorMessage = "User Id should be an integer"

@@ -6,7 +6,7 @@ const uploadPost = (userId, topicId, url, description, nextTopic) => {
     return new Promise((resolve, reject) => {
         con.query('SET @out = null; CALL add_post(? ,?, ?, ?, ?, @out); SELECT @out as post_id',
         [userId, topicId, url, description, nextTopic],
-        processor.processResults(resolve, reject));
+        processor.processPostResults(resolve, reject));
     });
 }
 
