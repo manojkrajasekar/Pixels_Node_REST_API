@@ -7,7 +7,7 @@ const utils = require("./utils");
 const uploadPost = (req, res) => {
     let userId = req.body.user_id;
     let topicId = req.body.topic_id;
-    let url = req.body.filecontext;
+    let url = req.body.url;
     let description = req.body.description;
     let nextTopic = req.body.next_topic;
     let errorMessage;
